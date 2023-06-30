@@ -35,6 +35,7 @@ const Header = () => {
         <nav className="header__nav">
           {navLinks.map((navLink, index) => (
             <Link 
+              key={index}
               to={navLink.url}
               className={`header__nav-link ${activeNavLinkIndex === index ? "header__nav-link_active" : ""}`}
               onClick={() => setActiveNavLinkIndex(index)}
