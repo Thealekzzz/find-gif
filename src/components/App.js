@@ -1,10 +1,23 @@
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
 
 import api_key from "../data/api_key.js";
+import Header from './Header';
+import Search from './Search';
+import Trends from './Trends';
+import Random from './Random';
 
-function App() {
+const App = () => {
+
+
   return (
-    <div className="App">
+    <div className="page">
+      <Header />
+
+      <Routes>
+        <Route path="/" element={<Search />} />
+        <Route path="/trends" element={<Trends />} />
+        <Route path="/random" element={<Random />} />
+      </Routes>
     </div>
   );
 }
