@@ -1,0 +1,27 @@
+.search__button {
+  width: 60px;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: white;
+  box-shadow: 2px 2px 10px #00000000;
+  
+  border-radius: 5px;
+  border: none;
+
+  transition: background-color .2s, box-shadow .2s, opacity .2s;
+}
+
+.search__button:not(:disabled):hover {
+  background-color: #fafafa;
+  box-shadow: 2px 2px 30px #00000008;
+  cursor: pointer;
+
+}
+
+.search__button:disabled {
+  opacity: .5;
+}

@@ -1,0 +1,13 @@
+.search__form {
+  box-sizing: border-box;
+
+  width: 100%;
+
+  display: flex;
+  gap: 20px;
+  
+  padding: 40px;
+  border-radius: 10px;
+  
+  background-color: #F3F3F3;
+}
