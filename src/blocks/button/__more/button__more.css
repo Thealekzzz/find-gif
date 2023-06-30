@@ -1,0 +1,14 @@
+.button__more {
+  display: block;
+  border: none;
+  padding: 20px 80px;
+  background-color: #333;
+  border-radius: 10px;
+  color: #fff;
+  margin: auto;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
