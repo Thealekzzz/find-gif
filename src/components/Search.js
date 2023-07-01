@@ -8,6 +8,7 @@ import useFormAndValidation from '../hooks/useFormAndValidation';
 
 import resetIcon from "../images/reset.svg";
 import searchIcon from "../images/search.svg";
+import Main from './Main';
 
 const Search = () => {
   const { values, handleChange, handleBlur, isValid, errors, resetForm } = useFormAndValidation();
@@ -36,7 +37,12 @@ const Search = () => {
 
       api.searchGifs(values.search, 20, 0)
         .then(data => {
-          setGifs(data);
+          // setGifs(data);
+          setGifs(data.data.map((item) => ({
+            id: item.id,
+            alt: item.title,
+            src: item.images.original.url,
+          })));
           console.log(data); // Вовод на экран число для теста
         });
     }
@@ -53,7 +59,7 @@ const Search = () => {
       handleSearch();
       setSearchTimeout(null);
     }, 1000));
-
+  // eslint-disable-next-line
   }, [values]);
 
   return (
@@ -83,6 +89,8 @@ const Search = () => {
           <img src={searchIcon} alt="Выполнить поиск, кнопка" />
         </button>
       </form>
+
+      <Main gifs={gifs}/>
     </div>
   );
 };
