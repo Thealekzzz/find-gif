@@ -2,7 +2,7 @@ import React from "react";
 import Button from "./Button";
 import Card from "./Card";
 
-const Main = ({ gifs, onNextButtonClick }) => {
+const Main = ({ gifs, onNextButtonClick, isLoading }) => {
   return (
     <main className="content">
       <section className="cards">
@@ -10,7 +10,7 @@ const Main = ({ gifs, onNextButtonClick }) => {
           return <Card key={gif.id} gif={gif} />
         })}
       </section>
-      <Button onClick={onNextButtonClick}/>
+      <Button onClick={onNextButtonClick} isLoading={isLoading}/>
     </main>
   );
 };

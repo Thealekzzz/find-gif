@@ -15,6 +15,7 @@ const Search = ({ limit }) => {
 
   const [gifs, setGifs] = useState([]);
   const [offset, setOffset] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [lastSearchString, setLastSearchString] = useState(null);
   const [searchTimeout, setSearchTimeout] = useState(null);
@@ -39,6 +40,7 @@ const Search = ({ limit }) => {
   }
 
   const handleSearch = (addToPrev = true) => {
+    setIsLoading(true);
     api
       .searchGifs(values.search, limit, offset)
       .then((recievedGifs) => {
@@ -52,7 +54,10 @@ const Search = ({ limit }) => {
 
         setGifs(newGifs);
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => {
+        setIsLoading(false);
+      });
 
   }
 
@@ -121,7 +126,7 @@ return (
       </button>
     </form>
 
-    <Main gifs={gifs} onNextButtonClick={handleNextButtonClick} />
+    <Main gifs={gifs} onNextButtonClick={handleNextButtonClick} isLoading={isLoading} />
   </div>
 );
 };

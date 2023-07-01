@@ -2,10 +2,14 @@
 @import url(./vendor/fonts.css);
 
 @import url(./blocks/content/content.css);
+
 @import url(./blocks/cards/cards.css);
 @import url(./blocks/card/card.css);
 @import url(./blocks/card/__image/card__image.css);
+
 @import url(./blocks/button/__more/button__more.css);
+
+@import url(./blocks/spinner/spinner.css);
 
 @import url(./blocks/random/random.css);
 @import url(./blocks/random/__image/random__image.css);
