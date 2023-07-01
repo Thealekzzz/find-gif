@@ -21,6 +21,18 @@ class Api {
   searchGifs(string, limit = 9, offset = 0) {
     return this.makeRequest(`${this.base_url}/search?api_key=${api_key}&q=${string}&limit=${limit}&offset=${offset}`);
   }
+
+  trendingGifs(limit = 9) {
+    return this.makeRequest(
+      `${this.base_url}/trending?api_key=${api_key}&limit=${limit}`
+    )
+  }
+
+  randomGif() {
+    return this.makeRequest(
+      `${this.base_url}/random?api_key=${api_key}`
+    )
+  }
 }
 
 
