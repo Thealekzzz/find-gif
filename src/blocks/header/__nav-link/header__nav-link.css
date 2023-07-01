@@ -15,3 +15,9 @@
 .header__nav-link:hover {
   background-color: #f8f8f8;
 }
+
+@media (max-width: 600px) {
+  .header__nav-link {
+    padding: 5px;
+  }
+}

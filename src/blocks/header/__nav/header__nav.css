@@ -2,3 +2,9 @@
   display: flex;
   gap: 20px;
 }
+
+@media (max-width: 600px) {
+  .header__nav {
+    gap: 10px;
+  }
+}
