@@ -1,26 +1,14 @@
-import React, { useEffect, useState } from "react";
-import Main from "./Main";
-import { api } from "../data/api";
+import React from "react";
+import { Routes, Route } from 'react-router-dom';
+
+import Header from './Header';
+import Search from './Search';
+import Trends from './Trends';
+import Random from './Random';
 
 function App() {
   const [gifs, setGifs] = useState([]);
   const [randomGif, setRandomGif] = useState({});
-
-  // get trends
-  useEffect(() => {
-    api
-      .trendingGifs()
-      .then((gif) => {
-        setGifs(
-          gif.data.map((item) => ({
-            id: item.id,
-            alt: item.title,
-            src: item.images.original.url,
-          }))
-        );
-      })
-      .catch(console.error);
-  }, []);
 
   // get random gif
   useEffect(() => {
@@ -32,8 +20,19 @@ function App() {
       })
       .catch(console.error);
   }, []);
+  
+  return (
+    <div className="page">
+      <Header />
 
-  return <Main gifs={gifs} randomGif={randomGif} />;
+      <Routes>
+        <Route path="/" element={<Search />} />
+        <Route path="/trends" element={<Trends />} />
+        <Route path="/random" element={<Random randomGif={randomGif} />} />
+      </Routes>
+    </div>
+  );
+
 }
 
 export default App;
