@@ -7,13 +7,15 @@ import Trends from './Trends';
 import Random from './Random';
 
 function App() {
+  const limit = 9;
+  
   return (
     <div className="page">
       <Header />
 
       <Routes>
-        <Route path="/" element={<Search />} />
-        <Route path="/trends" element={<Trends />} />
+        <Route path="/" element={<Search limit={limit} />} />
+        <Route path="/trends" element={<Trends limit={limit} />} />
         <Route path="/random" element={<Random />} />
       </Routes>
     </div>

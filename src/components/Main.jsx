@@ -2,7 +2,7 @@ import React from "react";
 import Button from "./Button";
 import Card from "./Card";
 
-const Main = ({ gifs }) => {
+const Main = ({ gifs, randomGif, onNextButtonClick }) => {
   return (
     <main className="content">
       <section className="cards">
@@ -10,7 +10,7 @@ const Main = ({ gifs }) => {
           return <Card key={gif.id} gif={gif} />
         })}
       </section>
-      <Button />
+      <Button onClick={onNextButtonClick}/>
     </main>
   );
 };
