@@ -1,0 +1,5 @@
+.search__input-error_hidden {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(5px);
+}

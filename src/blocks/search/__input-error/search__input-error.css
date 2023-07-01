@@ -1,0 +1,21 @@
+.search__input-error {
+  color: #EA5400;
+  font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+
+  position: absolute;
+  bottom: -23px;
+  left: 25px;
+
+  margin: 0;
+
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+
+  transition: 
+    visibility .2s cubic-bezier(0.165, 0.84, 0.44, 1),
+    opacity .2s cubic-bezier(0.165, 0.84, 0.44, 1),
+    transform .2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}

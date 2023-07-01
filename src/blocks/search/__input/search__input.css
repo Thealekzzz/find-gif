@@ -1,0 +1,28 @@
+.search__input {
+  box-sizing: border-box;
+
+  height: 60px;
+  width: 100%;
+
+  padding: 0 25px;
+
+  border-radius: 5px;
+  border: none;
+
+  font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  outline: 1px solid transparent;
+
+  transition: outline .2s;
+}
+
+.search__input:not(.search__input_invalid):focus {
+  outline: 1px solid #666;
+}
+
+.search__input::placeholder {
+  color: #979797;
+
+}
