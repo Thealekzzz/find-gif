@@ -9,28 +9,16 @@ import Trends from './Trends';
 import Random from './Random';
 
 function App() {
-  const [gifs, setGifs] = useState([]);
-  const [randomGif, setRandomGif] = useState({});
-
-  // get random gif
-  useEffect(() => {
-    api
-      .randomGif()
-      .then((gif) => {
-        setRandomGif(gif.data);
-        console.log(gif.data)
-      })
-      .catch(console.error);
-  }, []);
+  const limit = 9;
   
   return (
     <div className="page">
       <Header />
 
       <Routes>
-        <Route path="/" element={<Search />} />
-        <Route path="/trends" element={<Trends />} />
-        <Route path="/random" element={<Random randomGif={randomGif} />} />
+        <Route path="/" element={<Search limit={limit} />} />
+        <Route path="/trends" element={<Trends limit={limit} />} />
+        <Route path="/random" element={<Random />} />
       </Routes>
     </div>
   );
