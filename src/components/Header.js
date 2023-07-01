@@ -22,13 +22,12 @@ const Header = () => {
   ];
 
   const location = useLocation();
-  const [activeNavLinkIndex, setActiveNavLinkIndex] = useState(navLinks.findIndex(navLink => navLink.url === location.pathname));
 
   return (
     <header className='header'>
       <div className="header__left">
         <Link to="/">
-          <img src={logo} alt="" />
+          <img src={logo} alt="Логотип" />
         </Link>
       </div>
 
@@ -38,8 +37,7 @@ const Header = () => {
             <Link 
               key={index}
               to={navLink.url}
-              className={`header__nav-link ${activeNavLinkIndex === index ? "header__nav-link_active" : ""}`}
-              onClick={() => setActiveNavLinkIndex(index)}
+              className={`header__nav-link ${navLink.url === location.pathname ? "header__nav-link_active" : ""}`}
             >
               {navLink.name}
             </Link>
