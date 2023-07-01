@@ -35,7 +35,7 @@ const Search = () => {
     if (isValid && values.search && lastSearchString !== values.search) {
       setLastSearchString(values.search);
 
-      api.searchGifs(values.search, 20, 0)
+      api.searchGifs(values.search)
         .then(data => {
           // setGifs(data);
           setGifs(data.data.map((item) => ({
