@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import "../pages/Header.css";
 
@@ -21,7 +21,8 @@ const Header = () => {
     },
   ];
 
-  const [activeNavLinkIndex, setActiveNavLinkIndex] = useState(0);
+  const location = useLocation();
+  const [activeNavLinkIndex, setActiveNavLinkIndex] = useState(navLinks.findIndex(navLink => navLink.url === location.pathname));
 
   return (
     <header className='header'>
