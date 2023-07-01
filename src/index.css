@@ -9,7 +9,12 @@
 
 @import url(./blocks/button/__more/button__more.css);
 
+@import url(./blocks/loading/loading.css);
+@import url(./blocks/infotip/infotip.css);
+
 @import url(./blocks/spinner/spinner.css);
+@import url(./blocks/spinner/_black/spinner_black.css);
+@import url(./blocks/spinner/_size/spinner_size_L.css);
 
 @import url(./blocks/random/random.css);
 @import url(./blocks/random/__image/random__image.css);

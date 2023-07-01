@@ -6,8 +6,8 @@ const Main = ({ gifs, onNextButtonClick, isLoading }) => {
   return (
     <main className="content">
       <section className="cards">
-        {gifs.map((gif) => {
-          return <Card key={gif.id} gif={gif} />
+        {gifs.map((gif, index) => {
+          return <Card key={gif.id + index} gif={gif} />
         })}
       </section>
       <Button onClick={onNextButtonClick} isLoading={isLoading}/>

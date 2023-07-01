@@ -11,7 +11,7 @@ import searchIcon from "../images/search.svg";
 import Main from './Main';
 
 const Search = ({ limit }) => {
-  const { values, handleChange, handleBlur, isValid, errors, resetForm } = useFormAndValidation();
+  const { values, handleChange, handleBlur, isValid, errors, resetForm, setValues } = useFormAndValidation();
 
   const [gifs, setGifs] = useState([]);
   const [offset, setOffset] = useState(0);
@@ -39,13 +39,18 @@ const Search = ({ limit }) => {
     setOffset(prev => prev + limit);
   }
 
-  const handleSearch = (addToPrev = true) => {
+  const handleSearch = (extend = true, searchValue = null) => {
     setIsLoading(true);
+
+    if (!extend) {
+      setGifs([]);
+    }
+
     api
-      .searchGifs(values.search, limit, offset)
+      .searchGifs(searchValue || values.search, limit, offset)
       .then((recievedGifs) => {
         const newGifs = [
-          ...(addToPrev ? gifs : []),
+          ...(extend ? gifs : []),
           ...recievedGifs.data.map((item) => ({
             id: item.id,
             alt: item.title,
@@ -63,13 +68,20 @@ const Search = ({ limit }) => {
 
   // Поиск гифок при вводе запроса
   useEffect(() => {
+    // Задание состояния загрузки
+    if (isValid) {
+      setIsLoading(true);
+    } else {
+      setIsLoading(false);
+    }
+
     // Отмена таймаута выполнения поиска при очередном нажатии кнопки
     if (searchTimeout) {
       clearTimeout(searchTimeout);
     }
 
     // Ограничение поиска по одинаковым запросам при сабмите формы
-    if (isValid && values.search && lastSearchString !== values.search) {
+    if (isValid && lastSearchString !== values.search) {
       setLastSearchString(values.search);
 
       // Создание задержки поиска при вводе поискового запроса
@@ -89,46 +101,62 @@ const Search = ({ limit }) => {
       handleSearch(true);
 
     }
-
+    // eslint-disable-next-line
   }, [offset]);
 
 
 
-useEffect(() => {
-  // Добавить какие-то начальные гифки в state
-}, []);
+  useEffect(() => {
+    const requestStrings = ["good vibes", "summer", "vacation", "developer", "frontend", "music"];
+    const requestString = requestStrings[Math.floor(Math.random() * requestStrings.length)];
 
-return (
-  <div className='search'>
-    <form action="" className="search__form" onSubmit={handleSubmit}>
-      <div className="search__input-wrapper">
-        <input
-          type="text"
-          name='search'
-          required
-          minLength={2}
-          maxLength={40}
-          className={`search__input ${errors.search ? "search__input_invalid" : ""}`}
-          placeholder='Найди свою идеальную гифку'
-          value={values.search || ""}
-          onChange={handleInputChange}
-          onBlur={handleBlur}
-        />
-        <p className={`search__input-error ${errors.search ? "" : "search__input-error_hidden"}`}>{errors.search}</p>
-      </div>
+    setValues({search: requestString});
+    handleSearch(false, requestString);
+      
+    // eslint-disable-next-line
+  }, []);
 
-      <button type="reset" className='search__button' onClick={handleReset}>
-        <img src={resetIcon} alt="Очистить поле запроса, кнопка" />
-      </button>
+  return (
+    <div className='search'>
+      <form action="" className="search__form" onSubmit={handleSubmit}>
+        <div className="search__input-wrapper">
+          <input
+            type="text"
+            name='search'
+            required
+            minLength={2}
+            maxLength={40}
+            className={`search__input ${errors.search ? "search__input_invalid" : ""}`}
+            placeholder='Найди свою идеальную гифку'
+            value={values.search || ""}
+            onChange={handleInputChange}
+            onBlur={handleBlur}
+          />
+          <p className={`search__input-error ${errors.search ? "" : "search__input-error_hidden"}`}>{errors.search}</p>
+        </div>
 
-      <button type="submit" className='search__button' disabled={!isValid}>
-        <img src={searchIcon} alt="Выполнить поиск, кнопка" />
-      </button>
-    </form>
+        <button type="reset" className='search__button' onClick={handleReset}>
+          <img src={resetIcon} alt="Очистить поле запроса, кнопка" />
+        </button>
 
-    <Main gifs={gifs} onNextButtonClick={handleNextButtonClick} isLoading={isLoading} />
-  </div>
-);
+        <button type="submit" className='search__button' disabled={!isValid}>
+          <img src={searchIcon} alt="Выполнить поиск, кнопка" />
+        </button>
+      </form>
+
+      {gifs.length
+        ? (<Main gifs={gifs} onNextButtonClick={handleNextButtonClick} isLoading={isLoading} />)
+        : (<>{isLoading
+          ? (
+            <div className="loading">
+              <span className='spinner spinner_black spinner_size_L'></span>;
+            </div>
+          )
+          : (<span className='infotip'>{isValid ? "По этому запросу нет гифок 🥲" : "Нет запроса - нет гифок 😉"}</span>)
+        }</>)
+      }
+    </div >
+  );
 };
 
 export default Search;

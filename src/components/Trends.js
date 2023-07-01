@@ -31,10 +31,18 @@ const Trends = ({ limit }) => {
       .finally(() => {
         setIsLoading(false);
       });
+    // eslint-disable-next-line
   }, [offset]);
 
 
-  return <Main gifs={gifs} onNextButtonClick={handleNextButtonClick} isLoading={isLoading} />;
+  return gifs.length
+    ? (
+      <Main gifs={gifs} onNextButtonClick={handleNextButtonClick} isLoading={isLoading} />
+    ) : (
+      <div className="loading">
+        <span className='spinner spinner_black spinner_size_L'></span>;
+      </div>
+    )
 };
 
 export default Trends;
