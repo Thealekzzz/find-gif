@@ -1,0 +1,23 @@
+.header__nav-link {
+  color: #000;
+  font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  padding: 5px 10px;
+  border-radius: 3px;
+
+  transition: background-color .3s;
+}
+
+.header__nav-link:hover {
+  background-color: #f8f8f8;
+}
+
+@media (max-width: 600px) {
+  .header__nav-link {
+    padding: 5px;
+  }
+}
