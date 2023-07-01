@@ -28,7 +28,7 @@ function App() {
       .randomGif()
       .then((gif) => {
         setRandomGif(gif.data);
-        console.log(gif.data);
+        console.log(gif.data)
       })
       .catch(console.error);
   }, []);

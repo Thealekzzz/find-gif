@@ -13,7 +13,7 @@ const Main = ({ gifs, randomGif }) => {
       <Button />
 
       <section className="random">
-        <img className="random__image" src={randomGif.images.downsized_large.url} alt={randomGif.title} />
+        <img className="random__image" src={randomGif.images?.downsized_large.url} alt={randomGif.title} />
         <Button/>
       </section>
     </main>
