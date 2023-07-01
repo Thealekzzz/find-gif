@@ -1,18 +1,18 @@
-import React from "react"
+import React from "react";
 import Button from "./Button";
-import Card from "./Card"
+import Card from "./Card";
 
-const Main = (props) => {
+const Main = ({ gifs }) => {
   return (
     <main className="content">
       <section className="cards">
-        <Card/>
-        <Card/>
-        <Card/>
+        {gifs.map((gif) => {
+          return <Card key={gif.id} gif={gif} />
+        })}
       </section>
-      <Button/>
+      <Button />
     </main>
-  )
+  );
 };
 
 export default Main;

@@ -1,10 +1,8 @@
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 297px);
-  gap: 30px 24px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
+  grid-template-rows: repeat(3, 197px);
+  grid-gap: 30px 24px;
   justify-content: center;
   margin-bottom: 80px;
 }
