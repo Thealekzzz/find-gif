@@ -8,3 +8,9 @@
   padding: 0 40px;
 
 }
+
+@media (max-width: 600px) {
+  .search {
+    padding: 0;
+  }
+}

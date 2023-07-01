@@ -11,3 +11,10 @@
   
   background-color: #F3F3F3;
 }
+
+@media (max-width: 600px) {
+  .search__form {
+    border-radius: 0;
+    padding: 40px 20px;
+  }
+}
