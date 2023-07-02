@@ -24,6 +24,7 @@
   background: url(../../images/search-hexagon.svg) no-repeat;
 
   opacity: .2;
+  z-index: -1;
 }
 
 @media (max-width: 600px) {
