@@ -20,6 +20,16 @@ const Search = ({ limit }) => {
   const [lastSearchString, setLastSearchString] = useState(null);
   const [searchTimeout, setSearchTimeout] = useState(null);
 
+  const [buttonText, setButtonText] = useState('Хочу больше гифок!')
+  const textsList = [
+    'Хочу больше гифок!',
+    'Надо больше гифок!',
+    'А можно еще чуть-чуть? 🥺',
+    'Следующие!',
+    'Гифок много не бывает! 😈'
+  ]
+
+
   const handleInputChange = (evt) => {
     handleChange(evt);
   }
@@ -99,7 +109,7 @@ const Search = ({ limit }) => {
   useEffect(() => {
     if (offset !== 0) {
       handleSearch(true);
-
+      setButtonText(textsList[Math.floor(Math.random() * textsList.length)])
     }
     // eslint-disable-next-line
   }, [offset]);
@@ -145,7 +155,7 @@ const Search = ({ limit }) => {
       </form>
 
       {gifs.length
-        ? (<Main gifs={gifs} onNextButtonClick={handleNextButtonClick} isLoading={isLoading} />)
+        ? (<Main gifs={gifs} onNextButtonClick={handleNextButtonClick} buttonText={buttonText} isLoading={isLoading} />)
         : (<>{isLoading
           ? (
             <div className="loading">
