@@ -1,29 +1,33 @@
 import React, { useState, useEffect } from "react";
-
-import Button from './Button';
-
 import { api } from "../utils/api";
+import Button from './Button';
 
 const Random = () => {
   const [randomGif, setRandomGif] = useState({});
 
-  // get random gif
   useEffect(() => {
     api
       .randomGif()
       .then((gif) => {
         setRandomGif(gif.data);
-        console.log(gif.data)
       })
       .catch(console.error);
   }, []);
 
+  function handleClick() {
+    api
+      .randomGif()
+      .then((gif) => {
+        setRandomGif(gif.data);
+      })
+      .catch(console.error);
+  }
 
   return randomGif.url
     ? (
       <section className="random">
         <img className="random__image" src={randomGif?.images?.downsized_large.url} alt={randomGif.title} />
-        <Button />
+        <Button onClick={handleClick}/>
       </section>
     ) : (
       <div className="loading">

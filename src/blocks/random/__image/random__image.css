@@ -1,4 +1,6 @@
 .random__image {
   display: block;
-  margin: 0 auto 40px auto;
+  margin: 40px auto;
+  max-height: 621px;
+  max-width: 937px;
 }

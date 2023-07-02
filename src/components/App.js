@@ -8,7 +8,7 @@ import Random from './Random';
 
 function App() {
   const limit = 9;
-  
+
   return (
     <div className="page">
       <Header />
