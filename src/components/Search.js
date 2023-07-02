@@ -1,17 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 import "../pages/Search.css";
 
-import { api } from '../utils/api';
+import { api } from "../utils/api";
 
-import useFormAndValidation from '../hooks/useFormAndValidation';
+import useFormAndValidation from "../hooks/useFormAndValidation";
 
 import resetIcon from "../images/reset.svg";
 import searchIcon from "../images/search.svg";
-import Main from './Main';
+import Main from "./Main";
 
 const Search = ({ limit }) => {
-  const { values, handleChange, handleBlur, isValid, errors, resetForm, setValues } = useFormAndValidation();
+  const {
+    values,
+    handleChange,
+    handleBlur,
+    isValid,
+    errors,
+    resetForm,
+    setValues,
+  } = useFormAndValidation();
 
   const [gifs, setGifs] = useState([]);
   const [offset, setOffset] = useState(0);
@@ -20,33 +28,50 @@ const Search = ({ limit }) => {
   const [lastSearchString, setLastSearchString] = useState(null);
   const [searchTimeout, setSearchTimeout] = useState(null);
 
-  const [buttonText, setButtonText] = useState('Хочу больше гифок!')
+  const [buttonText, setButtonText] = useState("Хочу больше гифок!");
   const textsList = [
-    'Хочу больше гифок!',
-    'Надо больше гифок!',
-    'А можно еще чуть-чуть? 🥺',
-    'Следующие!',
-    'Гифок много не бывает! 😈'
-  ]
+    "Надо больше гифок!",
+    "А можно еще чуть-чуть? 🥺",
+    "Гифок много не бывает! 😈",
+    "Следующие!",
+  ];
 
+  const currentPage = offset / limit;
 
   const handleInputChange = (evt) => {
     handleChange(evt);
-  }
+  };
 
   const handleReset = () => {
     resetForm();
     setOffset(0);
     setGifs([]);
-  }
+  };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleSearch();
-  }
+  };
 
   function handleNextButtonClick() {
-    setOffset(prev => prev + limit);
+    setOffset((prev) => prev + limit);
+    switch (currentPage) {
+      case 0:
+        setButtonText(textsList[0]);
+        break;
+      case 1:
+        setButtonText(textsList[1]);
+        break;
+      case 2:
+        setButtonText(textsList[2]);
+        break;
+      case 3:
+        setButtonText(textsList[3]);
+        break;
+      case currentPage >= 4:
+        setButtonText(textsList[4]);
+        break;
+    }
   }
 
   const handleSearch = (extend = true, searchValue = null) => {
@@ -65,7 +90,8 @@ const Search = ({ limit }) => {
             id: item.id,
             alt: item.title,
             src: item.images.original.url,
-          }))];
+          })),
+        ];
 
         setGifs(newGifs);
       })
@@ -73,8 +99,7 @@ const Search = ({ limit }) => {
       .finally(() => {
         setIsLoading(false);
       });
-
-  }
+  };
 
   // Поиск гифок при вводе запроса
   useEffect(() => {
@@ -96,11 +121,12 @@ const Search = ({ limit }) => {
 
       // Создание задержки поиска при вводе поискового запроса
       // Чтобы не генерировать много лишних запросов в момент ввода
-      setSearchTimeout(setTimeout(() => {
-        handleSearch(false);
-        setSearchTimeout(null);
-      }, 1000));
-
+      setSearchTimeout(
+        setTimeout(() => {
+          handleSearch(false);
+          setSearchTimeout(null);
+        }, 1000)
+      );
     }
     // eslint-disable-next-line
   }, [values]);
@@ -109,63 +135,87 @@ const Search = ({ limit }) => {
   useEffect(() => {
     if (offset !== 0) {
       handleSearch(true);
-      setButtonText(textsList[Math.floor(Math.random() * textsList.length)])
     }
     // eslint-disable-next-line
   }, [offset]);
 
-
-
   useEffect(() => {
-    const requestStrings = ["good vibes", "summer", "vacation", "developer", "frontend", "music"];
-    const requestString = requestStrings[Math.floor(Math.random() * requestStrings.length)];
+    const requestStrings = [
+      "good vibes",
+      "summer",
+      "vacation",
+      "developer",
+      "frontend",
+      "music",
+    ];
+    const requestString =
+      requestStrings[Math.floor(Math.random() * requestStrings.length)];
 
-    setValues({search: requestString});
+    setValues({ search: requestString });
     handleSearch(false, requestString);
-      
+
     // eslint-disable-next-line
   }, []);
 
   return (
-    <div className='search'>
+    <div className="search">
       <form action="" className="search__form" onSubmit={handleSubmit}>
         <div className="search__input-wrapper">
           <input
             type="text"
-            name='search'
+            name="search"
             required
             minLength={2}
             maxLength={40}
-            className={`search__input ${errors.search ? "search__input_invalid" : ""}`}
-            placeholder='Найди свою идеальную гифку'
+            className={`search__input ${
+              errors.search ? "search__input_invalid" : ""
+            }`}
+            placeholder="Найди свою идеальную гифку"
             value={values.search || ""}
             onChange={handleInputChange}
             onBlur={handleBlur}
           />
-          <p className={`search__input-error ${errors.search ? "" : "search__input-error_hidden"}`}>{errors.search}</p>
+          <p
+            className={`search__input-error ${
+              errors.search ? "" : "search__input-error_hidden"
+            }`}
+          >
+            {errors.search}
+          </p>
         </div>
 
-        <button type="reset" className='search__button' onClick={handleReset}>
+        <button type="reset" className="search__button" onClick={handleReset}>
           <img src={resetIcon} alt="Очистить поле запроса, кнопка" />
         </button>
 
-        <button type="submit" className='search__button' disabled={!isValid}>
+        <button type="submit" className="search__button" disabled={!isValid}>
           <img src={searchIcon} alt="Выполнить поиск, кнопка" />
         </button>
       </form>
 
-      {gifs.length
-        ? (<Main gifs={gifs} onNextButtonClick={handleNextButtonClick} buttonText={buttonText} isLoading={isLoading} />)
-        : (<>{isLoading
-          ? (
+      {gifs.length ? (
+        <Main
+          gifs={gifs}
+          onNextButtonClick={handleNextButtonClick}
+          buttonText={buttonText}
+          isLoading={isLoading}
+        />
+      ) : (
+        <>
+          {isLoading ? (
             <div className="loading">
-              <span className='spinner spinner_black spinner_size_L'></span>;
+              <span className="spinner spinner_black spinner_size_L"></span>;
             </div>
-          )
-          : (<span className='infotip'>{isValid ? "По этому запросу нет гифок 🥲" : "Нет запроса - нет гифок 😉"}</span>)
-        }</>)
-      }
-    </div >
+          ) : (
+            <span className="infotip">
+              {isValid
+                ? "По этому запросу нет гифок 🥲"
+                : "Нет запроса - нет гифок 😉"}
+            </span>
+          )}
+        </>
+      )}
+    </div>
   );
 };
 
