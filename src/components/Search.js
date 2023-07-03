@@ -9,6 +9,7 @@ import useFormAndValidation from "../hooks/useFormAndValidation";
 import resetIcon from "../images/reset.svg";
 import searchIcon from "../images/search.svg";
 import Main from "./Main";
+import SearchButton from "./SearchButton";
 
 const Search = ({ limit }) => {
   const {
@@ -20,7 +21,7 @@ const Search = ({ limit }) => {
     resetForm,
     setValues,
   } = useFormAndValidation();
-  
+
   const textsList = [
     "Надо больше гифок!",
     "А можно еще чуть-чуть? 🥺",
@@ -37,7 +38,6 @@ const Search = ({ limit }) => {
   const [searchTimeout, setSearchTimeout] = useState(null);
 
   const [buttonText, setButtonText] = useState(textsList[0]);
-  
 
   const handleInputChange = (evt) => {
     handleChange(evt);
@@ -174,17 +174,22 @@ const Search = ({ limit }) => {
               {errors.search}
             </p>
           </div>
-
-          <button type="reset" className="search__button" onClick={handleReset}>
-            <img src={resetIcon} alt="Очистить поле запроса, кнопка" className="search__button-icon"/>
-          </button>
-
-          <button type="submit" className="search__button" disabled={!isValid}>
-            <img src={searchIcon} alt="Выполнить поиск, кнопка" className="search__button-icon"/>
-          </button>
+          <SearchButton
+            type="reset"
+            disabled={false}
+            onButtonClick={handleReset}
+            src={resetIcon}
+            alt="Очистить поле запроса, кнопка"
+          />
+          <SearchButton
+            type="submit"
+            disabled={!isValid}
+            src={searchIcon}
+            alt="Выполнить поиск, кнопка"
+          />
         </form>
       </div>
-      
+
       {gifs.length ? (
         <Main
           gifs={gifs}
