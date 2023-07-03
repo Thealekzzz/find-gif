@@ -31,6 +31,7 @@ const Search = ({ limit }) => {
   const [gifs, setGifs] = useState([]);
   const [offset, setOffset] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [totalGifs, setTotalGifs] = useState(0);
 
   const [lastSearchString, setLastSearchString] = useState(null);
   const [searchTimeout, setSearchTimeout] = useState(null);
@@ -76,6 +77,7 @@ const Search = ({ limit }) => {
           })),
         ];
 
+        setTotalGifs(recievedGifs.pagination.total_count);
         setGifs(newGifs);
       })
       .catch(console.error)
@@ -187,6 +189,7 @@ const Search = ({ limit }) => {
           onNextButtonClick={handleNextButtonClick}
           buttonText={buttonText}
           isLoading={isLoading}
+          isMoreGifs={offset + limit < totalGifs}
         />
       ) : (
         <>

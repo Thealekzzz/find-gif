@@ -16,6 +16,7 @@ const Trends = ({ limit }) => {
   const [offset, setOffset] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [buttonText, setButtonText] = useState(textsList[0]);
+  const [totalGifs, setTotalGifs] = useState(0);
 
   function handleNextButtonClick() {
     setOffset((prev) => prev + limit);
@@ -25,10 +26,11 @@ const Trends = ({ limit }) => {
     setIsLoading(true);
     api
       .trendingGifs(limit, offset)
-      .then((newGifs) => {
+      .then((recievedGifs) => {
+        setTotalGifs(recievedGifs.pagination.total_count);
         setGifs([
           ...gifs,
-          ...newGifs.data.map((item) => ({
+          ...recievedGifs.data.map((item) => ({
             id: item.id,
             alt: item.title,
             src: item.images.original.url,
@@ -52,6 +54,7 @@ const Trends = ({ limit }) => {
       onNextButtonClick={handleNextButtonClick}
       buttonText={buttonText}
       isLoading={isLoading}
+      isMoreGifs={offset + limit < totalGifs}
     />
   ) : (
     <div className="loading">
