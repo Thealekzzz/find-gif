@@ -1,14 +1,12 @@
 .header__nav-link {
   color: #000;
   font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
-
+  letter-spacing: 1.5px;
   text-decoration: none;
-
   padding: 5px 10px;
-  border-radius: 3px;
-
+  border-radius: 5px;
   transition: background-color .3s;
 }
 
@@ -16,8 +14,15 @@
   background-color: #f8f8f8;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 620px) {
   .header__nav-link {
     padding: 5px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 425px) {
+  .header__nav-link {
+    text-align: center;
   }
 }

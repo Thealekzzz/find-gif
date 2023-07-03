@@ -1,7 +1,7 @@
 .search__button {
   width: 60px;
   height: 60px;
-
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,7 +11,7 @@
   
   border-radius: 5px;
   border: none;
-
+  z-index: 1;
   transition: background-color .1s, box-shadow .2s, opacity .2s;
 }
 
@@ -30,4 +30,18 @@
   background-color: #e9e9e9;
   box-shadow: 2px 2px 30px #00000000;
 
+}
+
+@media (max-width: 620px) {
+  .search__button {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 475px) {
+  .search__button {
+    width: 35px;
+    height: 35px;
+  }
 }

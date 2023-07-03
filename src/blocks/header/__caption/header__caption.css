@@ -1,0 +1,14 @@
+.header__caption {
+  font-family: "Overpass Mono", "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  margin: 11px 0 28px 0;
+}
+
+@media (max-width: 425px) {
+  .header__caption {
+    font-size: 11px;
+    margin: 9px 0 13px 0;
+  }
+}

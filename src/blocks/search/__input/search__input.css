@@ -9,9 +9,10 @@
   border-radius: 5px;
   border: none;
 
-  font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Overpass Mono", "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
   font-weight: 600;
+  text-overflow: ellipsis;
 
   outline: 1px solid transparent;
 
@@ -25,4 +26,17 @@
 .search__input::placeholder {
   color: #979797;
 
+}
+
+@media (max-width: 620px) {
+  .search__input {
+    height: 50px;
+  }
+}
+
+@media (max-width: 475px) {
+  .search__input {
+    height: 35px;
+    font-size: 12px;
+  }
 }

@@ -2,29 +2,36 @@
   display: block;
   border: none;
   padding: 20px 80px;
-  background-color: #333;
-  border-radius: 10px;
-  color: #fff;
+  background-color: #32E85A;
+  filter: drop-shadow(7px 7px 0px #000);
+  color: #000;
   margin: auto;
-  font-family: Montserrat, sans-serif;
+  font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
-  line-height: normal;
-
+  letter-spacing: 1.12px;
   cursor: pointer;
   transition: background-color .2s, transform .2s, opacity .2s;
 }
 
 .button__more:not(:disabled):hover {
-  background-color: #111;
+  opacity: .8;
 }
 
 .button__more:not(:disabled):active {
-  background-color: black;
+  filter: drop-shadow(6px 6px 0px #000);
+  box-shadow: 6px 3px 4px 0px rgba(0, 0, 0, 0.25) inset;
   transform: scale(.96);
 }
 
 .button__more:disabled {
   opacity: .8;
+}
+
+@media (max-width: 425px) {
+  .button__more {
+    padding: 20px 60px;
+    font-size: 12px;
+  }
 }

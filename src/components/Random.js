@@ -41,7 +41,7 @@ const Random = () => {
       </section>
     ) : (
       <div className="loading">
-        <span className='spinner spinner_black spinner_size_L'></span>;
+        <span className='spinner spinner_size_L'></span>
       </div>
     )
 

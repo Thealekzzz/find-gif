@@ -1,20 +1,24 @@
 .search__form {
   box-sizing: border-box;
-
   width: 100%;
-
   display: flex;
   gap: 20px;
-  
   padding: 40px;
-  border-radius: 10px;
-  
-  background-color: #F3F3F3;
+  margin-top: 10px;
+  background: #32E85A;
+  box-shadow: 10px -7px 0px 0px #000;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 740px) {
   .search__form {
     border-radius: 0;
-    padding: 40px 20px;
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 425px) {
+  .search__form {
+    padding: 20px 15px;
+    gap: 15px;
   }
 }

@@ -1,0 +1,6 @@
+@media (max-width: 475px) {
+  .search__button-icon {
+    display: block;
+    width: 22px;
+  }
+}

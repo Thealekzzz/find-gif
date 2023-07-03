@@ -8,12 +8,12 @@ import logo from "../images/logo.svg";
 const Header = () => {
   const navLinks = [
     {
-      url: "/",
-      name: "Поиск",
+      url: "/trends",
+      name: "Гифки в тренде",
     },
     {
-      url: "/trends",
-      name: "Тренды",
+      url: "/",
+      name: "Поиск",
     },
     {
       url: "/random",
@@ -24,27 +24,22 @@ const Header = () => {
   const location = useLocation();
 
   return (
-    <header className='header'>
-      <div className="header__left">
-        <Link to="/">
-          <img src={logo} alt="Логотип" />
-        </Link>
-      </div>
-
-      <div className="header__right">
-        <nav className="header__nav">
-          {navLinks.map((navLink, index) => (
-            <Link 
-              key={index}
-              to={navLink.url}
-              className={`header__nav-link ${navLink.url === location.pathname ? "header__nav-link_active" : ""}`}
-            >
-              {navLink.name}
-            </Link>
-          ))}
-        </nav>
-      </div>
-      
+    <header className={`header ${location.pathname === '/' && `header_extention`}`}>
+      <Link to="/">
+        <img src={logo} alt="Логотип Гифкус" className='header__logo'/>
+      </Link>
+      <p className='header__caption'>Гифки на любой вкус</p>
+      <nav className="header__nav">
+        {navLinks.map((navLink, index) => (
+          <Link 
+            key={index}
+            to={navLink.url}
+            className={`header__nav-link ${navLink.url === location.pathname ? "header__nav-link_active" : ""}`}
+          >
+            {navLink.name}
+          </Link>
+        ))}
+      </nav> 
     </header>
   );
 };

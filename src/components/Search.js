@@ -158,41 +158,43 @@ const Search = ({ limit }) => {
   }, []);
 
   return (
-    <div className="search">
-      <form action="" className="search__form" onSubmit={handleSubmit}>
-        <div className="search__input-wrapper">
-          <input
-            type="text"
-            name="search"
-            required
-            minLength={2}
-            maxLength={40}
-            className={`search__input ${
-              errors.search ? "search__input_invalid" : ""
-            }`}
-            placeholder="Найди свою идеальную гифку"
-            value={values.search || ""}
-            onChange={handleInputChange}
-            onBlur={handleBlur}
-          />
-          <p
-            className={`search__input-error ${
-              errors.search ? "" : "search__input-error_hidden"
-            }`}
-          >
-            {errors.search}
-          </p>
-        </div>
+    <section className="search">
+      <div className="search__container">
+        <form action="" className="search__form" onSubmit={handleSubmit}>
+          <div className="search__input-wrapper">
+            <input
+              type="text"
+              name="search"
+              required
+              minLength={2}
+              maxLength={40}
+              className={`search__input ${
+                errors.search ? "search__input_invalid" : ""
+              }`}
+              placeholder="Найди свою идеальную гифку"
+              value={values.search || ""}
+              onChange={handleInputChange}
+              onBlur={handleBlur}
+            />
+            <p
+              className={`search__input-error ${
+                errors.search ? "" : "search__input-error_hidden"
+              }`}
+            >
+              {errors.search}
+            </p>
+          </div>
 
-        <button type="reset" className="search__button" onClick={handleReset}>
-          <img src={resetIcon} alt="Очистить поле запроса, кнопка" />
-        </button>
+          <button type="reset" className="search__button" onClick={handleReset}>
+            <img src={resetIcon} alt="Очистить поле запроса, кнопка" className="search__button-icon"/>
+          </button>
 
-        <button type="submit" className="search__button" disabled={!isValid}>
-          <img src={searchIcon} alt="Выполнить поиск, кнопка" />
-        </button>
-      </form>
-
+          <button type="submit" className="search__button" disabled={!isValid}>
+            <img src={searchIcon} alt="Выполнить поиск, кнопка" className="search__button-icon"/>
+          </button>
+        </form>
+      </div>
+      
       {gifs.length ? (
         <Main
           gifs={gifs}
@@ -204,7 +206,7 @@ const Search = ({ limit }) => {
         <>
           {isLoading ? (
             <div className="loading">
-              <span className="spinner spinner_black spinner_size_L"></span>;
+              <span className="spinner spinner_size_L"></span>
             </div>
           ) : (
             <span className="infotip">
@@ -215,7 +217,7 @@ const Search = ({ limit }) => {
           )}
         </>
       )}
-    </div>
+    </section>
   );
 };
 

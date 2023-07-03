@@ -1,34 +1,3 @@
 .search {
-  box-sizing: border-box;
-
-  width: 100%;
-  max-width: 1200px;
-
-  margin: 0 auto;
-  padding: 0 40px;
-
-  overflow: hidden;
-  position: relative;
-
-}
-
-.search::before {
-  content: " ";
-  display: block;
-
-  width: 246px;
-  height: 100%;
-  
-  position: absolute;
-
-  background: url(../../images/search-hexagon.svg) no-repeat;
-
-  opacity: .2;
-  z-index: -1;
-}
-
-@media (max-width: 600px) {
-  .search {
-    padding: 0;
-  }
+  background-color: #333;
 }
