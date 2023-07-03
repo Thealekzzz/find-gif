@@ -29,9 +29,9 @@
   opacity: .8;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 475px) {
   .button__more {
-    padding: 20px 60px;
+    padding: 17px 55px;
     font-size: 12px;
   }
 }
