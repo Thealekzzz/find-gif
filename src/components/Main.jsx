@@ -3,7 +3,7 @@ import Button from "./Button";
 import Card from "./Card";
 import Popup from "./Popup";
 
-const Main = ({ gifs, onNextButtonClick, buttonText, isLoading }) => {
+const Main = ({ gifs, onNextButtonClick, buttonText, isLoading, isMoreGifs }) => {
   const [selectedCard, setSelectedCard] = React.useState({})
   const [isPopupOpen, setPopupOpen] = React.useState(false)
   
@@ -27,9 +27,15 @@ const Main = ({ gifs, onNextButtonClick, buttonText, isLoading }) => {
           />;
         })}
       </section>
-      <Button onClick={onNextButtonClick} isLoading={isLoading}>
-        {buttonText}
-      </Button>
+      {isMoreGifs
+      ? (
+        <Button onClick={onNextButtonClick} isLoading={isLoading}>
+          {buttonText}
+        </Button>
+
+      ) : (
+        <p className="infotip">Это все гифки по такому запросу 🥲</p>
+      )}
     </main>
     <Popup 
       gif={selectedCard}
