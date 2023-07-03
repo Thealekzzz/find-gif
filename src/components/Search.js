@@ -20,6 +20,13 @@ const Search = ({ limit }) => {
     resetForm,
     setValues,
   } = useFormAndValidation();
+  
+  const textsList = [
+    "Надо больше гифок!",
+    "А можно еще чуть-чуть? 🥺",
+    "Гифок много не бывает! 😈",
+    "Следующие!",
+  ];
 
   const [gifs, setGifs] = useState([]);
   const [offset, setOffset] = useState(0);
@@ -28,15 +35,8 @@ const Search = ({ limit }) => {
   const [lastSearchString, setLastSearchString] = useState(null);
   const [searchTimeout, setSearchTimeout] = useState(null);
 
-  const [buttonText, setButtonText] = useState("Хочу больше гифок!");
-  const textsList = [
-    "Надо больше гифок!",
-    "А можно еще чуть-чуть? 🥺",
-    "Гифок много не бывает! 😈",
-    "Следующие!",
-  ];
-
-  const currentPage = offset / limit;
+  const [buttonText, setButtonText] = useState(textsList[0]);
+  
 
   const handleInputChange = (evt) => {
     handleChange(evt);
@@ -55,23 +55,6 @@ const Search = ({ limit }) => {
 
   function handleNextButtonClick() {
     setOffset((prev) => prev + limit);
-    switch (currentPage) {
-      case 0:
-        setButtonText(textsList[0]);
-        break;
-      case 1:
-        setButtonText(textsList[1]);
-        break;
-      case 2:
-        setButtonText(textsList[2]);
-        break;
-      case 3:
-        setButtonText(textsList[3]);
-        break;
-      case currentPage >= 4:
-        setButtonText(textsList[4]);
-        break;
-    }
   }
 
   const handleSearch = (extend = true, searchValue = null) => {
@@ -136,6 +119,11 @@ const Search = ({ limit }) => {
     if (offset !== 0) {
       handleSearch(true);
     }
+
+    // Изменение текста кнопки в зависимости от страницы
+    const currentPage = offset / limit;
+    setButtonText(textsList[Math.min(currentPage, textsList.length - 1)]);
+
     // eslint-disable-next-line
   }, [offset]);
 

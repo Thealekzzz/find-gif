@@ -5,37 +5,20 @@ import Main from "./Main";
 import { api } from "../utils/api";
 
 const Trends = ({ limit }) => {
-  const [gifs, setGifs] = useState([]);
-  const [offset, setOffset] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
-  const [buttonText, setButtonText] = useState("Хочу больше гифок!");
   const textsList = [
     "Надо больше гифок!",
     "А можно еще чуть-чуть? 🥺",
     "Гифок много не бывает! 😈",
     "Следующие!",
   ];
-  const currentPage = offset / limit;
+
+  const [gifs, setGifs] = useState([]);
+  const [offset, setOffset] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [buttonText, setButtonText] = useState(textsList[0]);
 
   function handleNextButtonClick() {
     setOffset((prev) => prev + limit);
-    switch (currentPage) {
-      case 0:
-        setButtonText(textsList[0]);
-        break;
-      case 1:
-        setButtonText(textsList[1]);
-        break;
-      case 2:
-        setButtonText(textsList[2]);
-        break;
-      case 3:
-        setButtonText(textsList[3]);
-        break;
-      case currentPage >= 4:
-        setButtonText(textsList[4]);
-        break;
-    }
   }
 
   useEffect(() => {
@@ -56,6 +39,10 @@ const Trends = ({ limit }) => {
       .finally(() => {
         setIsLoading(false);
       });
+
+    // Изменение текста кнопки в зависимости от страницы
+    const currentPage = offset / limit;
+    setButtonText(textsList[Math.min(currentPage, textsList.length - 1)]);
     // eslint-disable-next-line
   }, [offset]);
 
