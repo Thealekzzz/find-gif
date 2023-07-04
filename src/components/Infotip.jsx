@@ -1,17 +1,18 @@
 import React from "react";
 import gif from "../images/green-pear.gif";
+import InfotipText from "./InfotipText";
 
 const Infotip = ({ isValid }) => {
   return (
     <div className="infotip">
       {isValid ? (
-        <p className="infotip__text">По этому запросу нет гифок 🥲</p>
+        <InfotipText>По этому запросу нет гифок 🥲</InfotipText>
       ) : (
         <>
-          <p className="infotip__text">
+          <InfotipText>
             Нет запроса - нет гифок. <br />
             Давай это исправим?
-          </p>
+          </InfotipText>
           <img
             className="infotip__image"
             src={gif}
