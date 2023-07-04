@@ -1,4 +1,18 @@
 .random {
   background-color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 45px;
+  margin-top: 45px;
   padding-bottom: 57px;
+}
+
+@media (max-width: 500px) {
+  .random {
+    row-gap: 35px;
+    margin-top: 35px;
+    padding-bottom: 45px;
+  }
 }

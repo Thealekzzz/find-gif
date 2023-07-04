@@ -1,20 +1,12 @@
 .random__image {
   display: block;
-  margin: 40px auto;
-  max-width: 1000px;
+  max-width: 70%;
   max-height: 60vh;
   border-radius: 10px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 500px) {
   .random__image {
-    max-width: 100%;
+    max-width: 85%;
   }
 }
-
-@media (max-width: 740px) {
-  .random__image {
-    margin: 40px auto 20px;
-  }
-}
-
