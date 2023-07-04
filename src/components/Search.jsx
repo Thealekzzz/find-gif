@@ -44,6 +44,8 @@ const Search = ({ limit }) => {
   const handleReset = () => {
     resetForm();
     setOffset(0);
+    setLastSearchString(null);
+    setSearchTimeout(null);
     setGifs([]);
   };
 
