@@ -1,5 +1,7 @@
 import React from "react";
 
+import closeIcon from "../images/closePopup.svg";
+
 const Popup = ({ gif, isOpen, onClose }) => {
   React.useEffect(() => {
     if (!isOpen) return;
@@ -25,6 +27,8 @@ const Popup = ({ gif, isOpen, onClose }) => {
           alt={gif.alt}
           className="popup__image"
         />
+
+        <img src={closeIcon} className="popup__close-button" alt="Закрыть всплывающее окно, кнопка" onClick={onClose} />
       </div>
     </div>
   );
