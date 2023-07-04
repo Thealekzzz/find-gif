@@ -1,4 +1,5 @@
 import React from "react";
+import "../pages/Main.css";
 import Button from "./Button";
 import Card from "./Card";
 import Popup from "./Popup";

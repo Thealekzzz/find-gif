@@ -1,4 +1,5 @@
 import React from "react";
+import "../pages/Popup.css";
 import closeIcon from "../images/closePopup.svg";
 
 const Popup = ({ gif, isOpen, onClose }) => {

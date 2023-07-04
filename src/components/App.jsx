@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import "../pages/App.css";
 import Header from "./Header";
 import Search from "./Search";
 import Trends from "./Trends";
