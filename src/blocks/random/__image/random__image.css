@@ -1,6 +1,19 @@
 .random__image {
   display: block;
   margin: 40px auto;
-  max-height: 621px;
-  max-width: 937px;
+  max-width: 1000px;
+  max-height: 60vh;
 }
+
+@media (max-width: 1000px) {
+  .random__image {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 740px) {
+  .random__image {
+    margin: 40px auto 20px;
+  }
+}
+
