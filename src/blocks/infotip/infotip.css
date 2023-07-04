@@ -1,9 +1,13 @@
 .infotip {
-  display: block;
-  margin-top: 50px;
-  font-family: Montserrat, Arial, Helvetica, sans-serif;
-  font-size: 24px;
-  letter-spacing: 1.12px;
-  text-align: center;
-  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+  padding: 40px 0 50px 0;
+}
+
+@media (max-width: 475px) {
+  .infotip {
+    padding: 25px 0;
+  }
 }

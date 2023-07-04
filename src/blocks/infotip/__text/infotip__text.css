@@ -1,0 +1,20 @@
+.infotip__text {
+  margin: 0;
+  font-family: "Overpass Mono", "Helvetica Neue", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.6;
+  text-align: center;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .infotip__text {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 475px) {
+  .infotip__text {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,28 @@
+.infotip__image {
+  display: block;
+  max-width: 460px;
+  max-height: 460px;
+  border-radius: 10px;
+}
+
+@media (max-width: 760px) {
+  .infotip__image {
+    max-width: 320px;
+    max-height: 320px;
+  }
+}
+
+@media (max-width: 600px) {
+  .infotip__image {
+    max-width: 220px;
+    max-height: 220px;
+  }
+}
+
+@media (max-width: 425px) {
+  .infotip__image {
+    max-width: 180px;
+    max-height: 180px;
+  }
+}
+

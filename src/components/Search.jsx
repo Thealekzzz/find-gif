@@ -8,6 +8,7 @@ import searchIcon from "../images/search.svg";
 import Main from "./Main";
 import SearchButton from "./SearchButton";
 import Loader from "./Loader";
+import Infotip from "./Infotip";
 
 const Search = ({ limit }) => {
   const {
@@ -16,8 +17,7 @@ const Search = ({ limit }) => {
     handleBlur,
     isValid,
     errors,
-    resetForm,
-    setValues,
+    resetForm
   } = useFormAndValidation();
 
   const textsList = [
@@ -127,24 +127,6 @@ const Search = ({ limit }) => {
     // eslint-disable-next-line
   }, [offset]);
 
-  useEffect(() => {
-    const requestStrings = [
-      "good vibes",
-      "summer",
-      "vacation",
-      "developer",
-      "frontend",
-      "music",
-    ];
-    const requestString =
-      requestStrings[Math.floor(Math.random() * requestStrings.length)];
-
-    setValues({ search: requestString });
-    handleSearch(false, requestString);
-
-    // eslint-disable-next-line
-  }, []);
-
   return (
     <section className="search">
       <div className="search__container">
@@ -154,6 +136,7 @@ const Search = ({ limit }) => {
               type="text"
               name="search"
               required
+              autoComplete="off"
               minLength={2}
               maxLength={40}
               className={`search__input ${
@@ -201,11 +184,7 @@ const Search = ({ limit }) => {
           {isLoading ? (
             <Loader className="spinner_size_L" />
           ) : (
-            <span className="infotip">
-              {isValid
-                ? "По этому запросу нет гифок 🥲"
-                : "Нет запроса - нет гифок 😉"}
-            </span>
+            <Infotip isValid={isValid} />
           )}
         </>
       )}

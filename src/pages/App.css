@@ -3,7 +3,10 @@
 @import url(../blocks/button/__more/button__more.css);
 
 @import url(../blocks/loading/loading.css);
+
 @import url(../blocks/infotip/infotip.css);
+@import url(../blocks/infotip/__text/infotip__text.css);
+@import url(../blocks/infotip/__image/infotip__image.css);
 
 @import url(../blocks/spinner/spinner.css);
 @import url(../blocks/spinner/_black/spinner_black.css);
