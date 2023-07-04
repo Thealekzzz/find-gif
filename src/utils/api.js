@@ -18,11 +18,11 @@ class Api {
     return Promise.reject(`Ошибка ${res.status}`);
   }
 
-  searchGifs(string, limit = 9, offset = 0) {
+  searchGifs(string, limit = 12, offset = 0) {
     return this.makeRequest(`${this.base_url}/search?api_key=${api_key}&q=${string}&limit=${limit}&offset=${offset}`);
   }
 
-  trendingGifs(limit = 9, offset = 0) {
+  trendingGifs(limit = 12, offset = 0) {
     return this.makeRequest(
       `${this.base_url}/trending?api_key=${api_key}&limit=${limit}&offset=${offset}`
     )
