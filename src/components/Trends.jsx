@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-
 import Main from "./Main";
-
 import { api } from "../utils/api";
 
 const Trends = ({ limit }) => {
