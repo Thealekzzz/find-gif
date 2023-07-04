@@ -1,21 +1,15 @@
 .search__input {
   box-sizing: border-box;
-
   height: 60px;
   width: 100%;
-
   padding: 0 25px;
-
   border-radius: 5px;
   border: none;
-
   font-family: "Overpass Mono", "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
   font-weight: 600;
   text-overflow: ellipsis;
-
   outline: 1px solid transparent;
-
   transition: outline .2s;
 }
 

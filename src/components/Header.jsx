@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-
 import "../pages/Header.css";
-
 import logo from "../images/logo.svg";
 
 const Header = () => {
