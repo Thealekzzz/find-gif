@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Main from "./Main";
 import { api } from "../utils/api";
+import Main from "./Main";
+import Loader from "./Loader";
 
 const Trends = ({ limit }) => {
   const textsList = [
@@ -55,9 +56,7 @@ const Trends = ({ limit }) => {
       isMoreGifs={offset + limit < totalGifs}
     />
   ) : (
-    <div className="loading">
-      <span className="spinner spinner_size_L"></span>
-    </div>
+    <Loader className="spinner_size_L" />
   );
 };
 

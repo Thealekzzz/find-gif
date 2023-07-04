@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
-
 import "../pages/Search.css";
-
 import { api } from "../utils/api";
-
 import useFormAndValidation from "../hooks/useFormAndValidation";
 
 import resetIcon from "../images/reset.svg";
 import searchIcon from "../images/search.svg";
 import Main from "./Main";
 import SearchButton from "./SearchButton";
+import Loader from "./Loader";
 
 const Search = ({ limit }) => {
   const {
@@ -201,9 +199,7 @@ const Search = ({ limit }) => {
       ) : (
         <>
           {isLoading ? (
-            <div className="loading">
-              <span className="spinner spinner_size_L"></span>
-            </div>
+            <Loader className="spinner_size_L" />
           ) : (
             <span className="infotip">
               {isValid
